@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import React from 'react'
 
-const Banner = () => {
+const Hero = () => {
     return (
         <div>
             <section className="bg-gray-50">
@@ -21,7 +21,7 @@ const Banner = () => {
                         <div className="mt-4 flex justify-center gap-4 sm:mt-6">
                             <Button asChild><Link href={process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL}>Get Started</Link></Button>
                         </div>
-                        
+
                     </div>
                 </div>
             </section>
@@ -29,4 +29,4 @@ const Banner = () => {
     )
 }
 
-export default Banner
+export default Hero
