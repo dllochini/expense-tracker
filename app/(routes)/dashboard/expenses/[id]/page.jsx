@@ -3,11 +3,12 @@
 import { db } from '@/utils/dbConfigs'
 import { Budgets, Expenses } from '@/utils/schema';
 import { useUser } from '@clerk/nextjs';
-import { eq, getTableColumns, sql } from 'drizzle-orm';
+import { desc, eq, getTableColumns, sql } from 'drizzle-orm';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import BudgetItem from '../../budget/_components/BudgetItem';
 import AddExpense from '../_components/AddExpense';
+import ExpenseListTable from '../_components/ExpenseListTable';
 
 function ExpensesScreen() {
 
@@ -15,9 +16,9 @@ function ExpensesScreen() {
     const { user } = useUser();
 
     const [budgetInfo, setBudgetInfo] = useState(null);
+    const [expensesList, setExpensesList] = useState([])
 
     const getBudgetInfo = async () => {
-        if (!user?.primaryEmailAddress?.emailAddress || !id) return;
 
         const result = await db.select({
             ...getTableColumns(Budgets),
@@ -31,11 +32,26 @@ function ExpensesScreen() {
             .groupBy(Budgets.id);
 
         setBudgetInfo(result[0] ?? null);
-        
+
+    }
+
+    const getExpensesList = async () => {
+        const result = await db.select().from(Expenses)
+            .where(eq(Expenses.budgetID, id))
+            .orderBy(desc(Expenses.id))
+        setExpensesList(result)
+        console.log(result)
+    }
+
+    const refreshAll = () => {
+        getBudgetInfo()
+        getExpensesList()
     }
 
     useEffect(() => {
-        getBudgetInfo();
+        user && getBudgetInfo();
+        getExpensesList();
+
     }, [user, id]);
 
     return (
@@ -47,7 +63,11 @@ function ExpensesScreen() {
                     <BudgetItem budget={budgetInfo} /> :
                     <div className='w-full bg-slate-200 rounded-lg h-37.5 animate-pulse'></div>
                 }
-                <AddExpense budgetId={id} user={user} refreshData={()=>getBudgetInfo()}/>
+                <AddExpense budgetId={id} user={user} refreshData={() => refreshAll()} />
+            </div>
+            <div>
+                <h2 className='font-bold text-lg'>Latest Expenses</h2>
+                <ExpenseListTable expensesList={expensesList} refreshData={() => refreshAll()} />
             </div>
         </div>
     )
