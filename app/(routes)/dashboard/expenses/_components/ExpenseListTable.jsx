@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button'
 import { db } from '@/utils/dbConfigs'
 import { Expenses } from '@/utils/schema'
 import { eq } from 'drizzle-orm'
@@ -29,14 +30,18 @@ function ExpenseListTable({ expensesList, refreshData }) {
                 <h2 className='font-bold'>Action</h2>
             </div>
             {expensesList.map((expenses, index) => (
-                <div key={index} className='grid grid-cols-4 bg-slate-50 p-2'>
+                <div key={index} className='grid grid-cols-4 bg-slate-50 p-2 items-center'>
                     <h2>{expenses.name}</h2>
                     <h2>${expenses.amount}</h2>
                     <h2>{expenses.createdAt.toLocaleDateString()}</h2>
                     <h2>
-                        <Trash className='text-red-600 cursor-pointer'
+                        <Button
+                            className="flex items-center gap-2 border border-red-400 bg-transparent text-red-500 hover:bg-red-50 px-4 py-2 rounded-md"
                             onClick={() => deleteExpense(expenses)}
-                        />
+                        >
+                            <Trash />
+                        </Button>
+
                     </h2>
                 </div>
             ))}

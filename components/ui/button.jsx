@@ -27,6 +27,35 @@ const buttonVariants = cva(
         icon: "size-9",
         "icon-sm": "size-8",
         "icon-lg": "size-10",
+        hero: `
+  flex items-center justify-center relative overflow-hidden
+  h-14 px-10 rounded-full text-lg font-medium
+  bg-gradient-to-br from-indigo-600 via-blue-600 to-green-600
+  text-white border-transparent
+  outline-none duration-300 ease-linear
+  after:absolute after:inset-0 after:aspect-square after:scale-0 after:opacity-70
+  after:origin-center after:duration-300 after:ease-linear after:rounded-full
+  after:top-0 after:left-0 after:bg-white/20
+  hover:after:opacity-100 hover:after:scale-[2.5]
+  hover:bg-indigo-700 hover:border-indigo-800
+  disabled:pointer-events-none disabled:opacity-50
+`,
+heroOutline: `
+  flex items-center justify-center relative overflow-hidden
+  h-12 px-8 rounded-full text-md font-medium
+  bg-transparent text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 via-blue-600 to-green-600
+  border-2 border-gradient-to-br from-indigo-600 via-blue-600 to-green-600
+  outline-none duration-300 ease-linear
+  after:absolute after:inset-0 after:aspect-square after:scale-0 after:opacity-70
+  after:origin-center after:duration-300 after:ease-linear after:rounded-full
+  after:top-0 after:left-0 after:bg-white/20
+  hover:after:opacity-100 hover:after:scale-[2.5]
+  hover:bg-indigo-50 hover:border-gray-400
+  disabled:pointer-events-none disabled:opacity-50
+`,
+
+
+
       },
     },
     defaultVariants: {
