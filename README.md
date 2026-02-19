@@ -19,7 +19,7 @@ Welcome to the **Next.js Expense Tracker**! This is a beginner-friendly full-sta
 ## Demo
 
 Add your deployed app link here (e.g., Vercel, Netlify):  
-[Live Demo](expense-tracker-1sf0fukus-lochini-dikkumburas-projects.vercel.app)
+[Live Demo](https://expense-tracker-alpha-inky-61.vercel.app/)
 
 ---
 
