@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation'
 function DashboardLayout({ children }) {
 
   const { user } = useUser();
-  const router = useRouter();
+  const route = useRouter();
 
   const checkUserBudgets = async () => {
     const result = await db.select().from(Budgets)
@@ -20,7 +20,7 @@ function DashboardLayout({ children }) {
 
     console.log(`helloo ${result}`)
     if (result?.length == 0) {
-      router.replace('/dashboard/budget')
+      route.replace('/dashboard/budgets')
     }
   }
 
