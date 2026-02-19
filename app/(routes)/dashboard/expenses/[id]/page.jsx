@@ -10,7 +10,7 @@ import BudgetItem from '../../budgets/_components/BudgetItem';
 import AddExpense from '../_components/AddExpense';
 import ExpenseListTable from '../_components/ExpenseListTable';
 import { Button } from '@/components/ui/button';
-import { Trash } from 'lucide-react';
+import { ArrowBigLeft, ArrowLeft, Trash } from 'lucide-react';
 import {
     AlertDialog,
     AlertDialogAction,
@@ -92,11 +92,20 @@ function ExpensesScreen() {
 
     return (
         <div className='p-10'>
-            <h2 className='text-2xl font-bold  flex justify-between items-center'>
-                My Expenses
+
+            <div className='flex justify-between items-center'>
+
+                <h2 className='text-2xl font-bold flex items-center gap-2'>
+                    <ArrowLeft className='cursor-pointer' onClick={() => {
+                        route.replace('/dashboard')
+                    }}
+                    />
+                    My Expenses
+                </h2>
+
                 <div className='flex gap-2 items-center'>
 
-                    <EditBudget user={user} budgetInfo={budgetInfo} refreshData={()=>refreshAll()}/>
+                    <EditBudget user={user} budgetInfo={budgetInfo} refreshData={() => refreshAll()} />
                     <AlertDialog>
                         <AlertDialogTrigger asChild>
                             <Button className='flex gap-2' variant='destructive'>
@@ -117,7 +126,7 @@ function ExpensesScreen() {
                     </AlertDialog>
                 </div>
 
-            </h2>
+            </div>
 
 
 
@@ -129,7 +138,7 @@ function ExpensesScreen() {
                 <AddExpense budgetId={id} user={user} refreshData={() => refreshAll()} />
             </div>
             <div>
-                <h2 className='font-bold text-lg'>Latest Expenses</h2>
+
                 <ExpenseListTable expensesList={expensesList} refreshData={() => refreshAll()} />
             </div>
         </div>
