@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Expense Tracker
+
+Welcome to the **Next.js Expense Tracker**! This is a beginner-friendly full-stack project that helps you manage your personal expenses. It’s built with **Next.js**, **React**, **Tailwind CSS**, and **Drizzle ORM** for database management. This project is perfect for learning full-stack development and deploying modern web apps.
+
+---
+
+## Table of Contents
+
+- [Demo](#demo)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## Demo
+
+Add your deployed app link here (e.g., Vercel, Netlify):  
+[Live Demo](expense-tracker-1sf0fukus-lochini-dikkumburas-projects.vercel.app)
+
+---
+
+## Features
+
+- Add, edit, and delete expenses
+- Track expenses by category
+- Responsive and mobile-friendly UI
+- Dark and light mode support
+- Persistent storage with a database via Drizzle ORM
+- Optional: Secure authentication with Clerk
+
+---
+
+## Tech Stack
+
+- **Frontend:** Next.js, React  
+- **Styling:** Tailwind CSS  
+- **Backend / Database:** Drizzle ORM  
+- **Authentication (Optional):** Clerk  
+- **Deployment:** Vercel
+
+---
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to run the project locally:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/nextjs-expense-tracker.git
+cd nextjs-expense-tracker
+````
+
+### 2. Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3. Set up environment variables
+
+Create a `.env` file in the root and add your environment variables, for example:
+
+```env
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=your-clerk-sign-in-url
+DATABASE_URL=your-database-connection-string
+```
+
+### 4. Run the development server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
