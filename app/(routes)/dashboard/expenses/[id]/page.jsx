@@ -23,6 +23,7 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { toast } from 'sonner';
+import EditBudget from '../_components/EditBudget';
 
 
 function ExpensesScreen() {
@@ -93,24 +94,29 @@ function ExpensesScreen() {
         <div className='p-10'>
             <h2 className='text-2xl font-bold  flex justify-between items-center'>
                 My Expenses
-                <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                        <Button className='flex gap-2' variant='destructive'>
-                            <Trash /> Delete</Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                        <AlertDialogHeader>
-                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                            <AlertDialogDescription>
-                                This action cannot be undone. This will permanently delete your current budget along with expenses.
-                            </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction onClick={() => deleteBudget()}>Continue</AlertDialogAction>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </AlertDialog>
+                <div className='flex gap-2 items-center'>
+
+                    <EditBudget user={user} budgetInfo={budgetInfo} refreshData={()=>refreshAll()}/>
+                    <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                            <Button className='flex gap-2' variant='destructive'>
+                                <Trash /> Delete</Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                            <AlertDialogHeader>
+                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                    This action cannot be undone. This will permanently delete your current budget along with expenses.
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <AlertDialogAction onClick={() => deleteBudget()}>Continue</AlertDialogAction>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
+                </div>
+
             </h2>
 
 
